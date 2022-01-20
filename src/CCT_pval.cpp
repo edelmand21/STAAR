@@ -25,16 +25,16 @@ double CCT_pval(arma::vec x, arma::vec weights)
 	{
 		if(x(k) < 1e-16)
 		{
-			cct_stat = cct_stat + weights(k)/x(k)/PI;
+			cct_stat = cct_stat + weights(k)/x(k)/3.1415;
 		}else
 		{
-			cct_stat = cct_stat + weights(k)*tan((0.5-x(k))*PI);
+			cct_stat = cct_stat + weights(k)*tan((0.5-x(k))*3.1415);
 		}
 	}
 
 	if (cct_stat > 1e+15)
 	{
-        pval = (1/cct_stat)/PI;
+        pval = (1/cct_stat)/3.1415;
     }else
 	{
 		pval = R::pcauchy(cct_stat,0.0,1.0,lower,logp);
